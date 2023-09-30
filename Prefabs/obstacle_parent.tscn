@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://defoaspfoqiqr"]
+
+[ext_resource type="Texture2D" uid="uid://e8l3nxfbckhi" path="res://Sprites/black_square.png" id="1_dep1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmu5o"]
+size = Vector2(75, 524)
+
+[node name="ObstacleParent" type="Node2D"]
+
+[node name="Obstacle" type="Area2D" parent="."]
+position = Vector2(0, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+position = Vector2(2.49999, 0)
+scale = Vector2(0.123047, 1)
+texture = ExtResource("1_dep1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(3.5, -2)
+shape = SubResource("RectangleShape2D_xmu5o")
+
+[node name="Obstacle2" type="Area2D" parent="."]
+position = Vector2(0, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle2"]
+position = Vector2(2.49999, 0)
+scale = Vector2(0.123047, 1)
+texture = ExtResource("1_dep1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
+position = Vector2(3.5, -2)
+shape = SubResource("RectangleShape2D_xmu5o")

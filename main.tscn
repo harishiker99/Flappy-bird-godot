@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgtwf83wq4y4p"]
+
+[ext_resource type="Script" path="res://PlayerController.gd" id="1_vqo2a"]
+[ext_resource type="Texture2D" uid="uid://d3xab4l3fwavk" path="res://Sprites/mac.png" id="2_s6a27"]
+[ext_resource type="Script" path="res://GameManager.gd" id="3_lu250"]
+[ext_resource type="Texture2D" uid="uid://bf32j31pibxga" path="res://Sprites/background.png" id="3_pj2w7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj4we"]
+size = Vector2(69, 67)
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-639.0]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(-2, 4)
+script = ExtResource("1_vqo2a")
+jump_force = -250.0
+gravity_force = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_s6a27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-6.5, -2.5)
+shape = SubResource("RectangleShape2D_vj4we")
+
+[node name="ScreenMiddle" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="ScreenMiddle"]
+
+[node name="ScreenBottom" type="Node2D" parent="ScreenMiddle"]
+position = Vector2(0, 324)
+
+[node name="ScreenTop" type="Node2D" parent="ScreenMiddle"]
+position = Vector2(0, -324)
+
+[node name="ScreenLeft" type="Node2D" parent="ScreenMiddle"]
+position = Vector2(-204, 0)
+
+[node name="ScreenRight" type="Node2D" parent="ScreenMiddle"]
+position = Vector2(204, 0)
+
+[node name="ScreenBarrier" type="Sprite2D" parent="ScreenMiddle"]
+position = Vector2(-609.125, -1)
+scale = Vector2(0.660406, 1)
+texture = ExtResource("3_pj2w7")
+
+[node name="ScreenBarrier2" type="Sprite2D" parent="ScreenMiddle"]
+position = Vector2(495.25, 4)
+scale = Vector2(0.515394, 1.29102)
+texture = ExtResource("3_pj2w7")
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("3_lu250")
+
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
